@@ -54,8 +54,15 @@ fi
 
 git clone git://github.com/cakephp/cakephp.git --branch $CAKE_REF --depth 1 ../cakephp
 
+# Prepare PHPUnit
+cd ../cakephp
+if [ "$PHPCS" != '1' ]; then
+        composer require "phpunit/phpunit=3.7.38"
+        echo "require_once 'vendors/autoload.php';" >> app/Config/bootstrap.php
+fi
+
 # Prepare plugin
-cd ../cakephp/app
+cd app
 
 chmod -R 777 tmp
 
@@ -72,11 +79,6 @@ fi
 for dep in $REQUIRE; do
     composer require --no-interaction --prefer-source $dep;
 done
-
-if [ "$PHPCS" != '1' ]; then
-	composer require "phpunit/phpunit=3.7.38"
-	echo "require_once 'vendors/autoload.php';" >> Config/bootstrap.php
-fi
 
 phpenv rehash
 
