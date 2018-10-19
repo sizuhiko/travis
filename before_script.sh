@@ -56,10 +56,10 @@ git clone git://github.com/cakephp/cakephp.git --branch $CAKE_REF --depth 1 ../c
 
 # Prepare PHPUnit
 cd ../cakephp
-CAKEPHP_ROOT=$(cd "$(dirname "$0")"; pwd)
+CAKEPHP_ROOT=$(pwd)
 if [ "$PHPCS" != '1' ]; then
         composer require "phpunit/phpunit=3.7.38"
-        echo "require_once '/$CAKEPHP_ROOT/vendors/autoload.php';" >> app/Config/bootstrap.php
+        echo "require_once '$CAKEPHP_ROOT/vendors/autoload.php';" >> app/Config/bootstrap.php
 fi
 
 # Prepare plugin
