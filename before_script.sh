@@ -58,7 +58,7 @@ git clone git://github.com/cakephp/cakephp.git --branch $CAKE_REF --depth 1 ../c
 cd ../cakephp
 if [ "$PHPCS" != '1' ]; then
         composer require "phpunit/phpunit=3.7.38"
-        echo "require_once 'vendors/autoload.php';" >> app/Config/bootstrap.php
+        echo "require_once '../vendors/autoload.php';" >> app/Config/bootstrap.php
 fi
 
 # Prepare plugin
