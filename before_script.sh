@@ -74,8 +74,8 @@ for dep in $REQUIRE; do
 done
 
 if [ "$PHPCS" != '1' ]; then
-	composer global require 'phpunit/phpunit=3.7.38'
-	ln -s ~/.composer/vendor/phpunit/phpunit/PHPUnit ./Vendor/PHPUnit
+	composer require "phpunit/phpunit=3.7.38"
+	echo "require_once 'vendors/autoload.php';" >> Config/bootstrap.php
 fi
 
 phpenv rehash
